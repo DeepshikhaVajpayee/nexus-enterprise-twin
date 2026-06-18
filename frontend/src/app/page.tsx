@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import ReactFlow, { Background, Controls, MarkerType } from "reactflow";
 import "reactflow/dist/style.css";
 import { api } from "@/lib/api";
+import AuthGate from "@/components/AuthGate";
 
 export default function Home() {
   const [risk, setRisk] = useState<any>(null);
@@ -435,6 +436,8 @@ function IntelRow({ text }: any) {
     </div>
   );
 }
+
+
 
 
 

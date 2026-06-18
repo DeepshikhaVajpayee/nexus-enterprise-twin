@@ -15,6 +15,7 @@ from app.reasoning.recommendation_engine import generate_recommendations, ask_ai
 
 from app.services.timeline_service import add_timeline, get_timeline
 from app.services.executive_alert_service import create_alert_from_event, get_autonomous_alerts
+from app.services.auth_service import authenticate_user
 
 
 router = APIRouter(prefix="/api", tags=["Enterprise Intelligence"])
@@ -22,6 +23,11 @@ router = APIRouter(prefix="/api", tags=["Enterprise Intelligence"])
 
 class COOQuestion(BaseModel):
     question: str
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
 
 
 @router.get("/health")
@@ -121,3 +127,26 @@ def enterprise_recommendations():
 @router.post("/coo/ask")
 def coo_ask(data: COOQuestion):
     return ask_ai_coo(data.question)
+
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+@router.post("/auth/login")
+def login(data: LoginRequest):
+    user = authenticate_user(data.email, data.password)
+
+    if not user:
+        return {
+            "success": False,
+            "message": "Invalid email or password"
+        }
+
+    return {
+        "success": True,
+        "message": "Login successful",
+        **user
+    }
