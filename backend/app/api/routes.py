@@ -150,3 +150,15 @@ def login(data: LoginRequest):
         "message": "Login successful",
         **user
     }
+
+from fastapi.responses import StreamingResponse
+from app.services.pdf_service import generate_ceo_report
+
+@router.get("/reports/ceo")
+def ceo_report():
+    pdf = generate_ceo_report()
+    return StreamingResponse(
+        pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": "attachment; filename=ceo_report.pdf"}
+    )
