@@ -133,6 +133,13 @@ api.get("/timeline").then((res) => setTimeline(res.data)).catch(() => {});
   return (
     <main className="min-h-screen bg-[#050505] p-8 text-white">
       <section className="border-b border-cyan-400/30 pb-6">
+        <a
+          href="http://127.0.0.1:8000/api/reports/ceo"
+          target="_blank"
+          className="float-right rounded-lg border border-amber-400/30 px-4 py-2 text-sm font-bold text-amber-300 hover:bg-amber-400/10"
+        >
+          Generate CEO Report
+        </a>
         <p className="text-xs tracking-[0.45em] text-cyan-300">
           NEXUS ENTERPRISE TWIN
         </p>
@@ -436,6 +443,7 @@ function IntelRow({ text }: any) {
     </div>
   );
 }
+
 
 
 
