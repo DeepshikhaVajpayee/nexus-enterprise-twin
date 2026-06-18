@@ -1,0 +1,31 @@
+﻿{
+  "projects": [
+    {
+      "id": "P1",
+      "name": "Project Alpha",
+      "progress": 42,
+      "deadline_days_left": 20,
+      "dependencies": ["P2"],
+      "blockers": 3,
+      "team_id": "T1"
+    },
+    {
+      "id": "P2",
+      "name": "Project Beta",
+      "progress": 55,
+      "deadline_days_left": 12,
+      "dependencies": [],
+      "blockers": 2,
+      "team_id": "T1"
+    }
+  ],
+  "teams": [
+    {
+      "id": "T1",
+      "name": "Team X",
+      "engineers": 8,
+      "active_tasks": 34,
+      "capacity_per_engineer": 4
+    }
+  ]
+}
